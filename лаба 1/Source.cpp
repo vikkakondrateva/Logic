@@ -7,10 +7,8 @@
 #include <malloc.h>
 
 
-
-
 void numb1() {                //1 разницу между максимальным и минимальным элементами массива
-	
+
 	printf("No 1\n");
 	int max, min, i;
 	int sub = 0;
@@ -32,10 +30,8 @@ void numb1() {                //1 разницу между максимальным и минимальным элеме
 
 
 
-
-
 void numb2() {              //2 инициализацию массива случайными числами
-	
+
 	printf("No 2\n");
 	int arr2[5];
 	int i;
@@ -49,10 +45,8 @@ void numb2() {              //2 инициализацию массива случайными числами
 
 
 
-
-
 void numb3() {           //3 создание массива произвольного размера, вводимого с клавиатуры
-	
+
 	printf("No 3\n");
 	int* arr3;
 	int n, i;
@@ -67,6 +61,9 @@ void numb3() {           //3 создание массива произвольного размера, вводимого с
 		printf("Введите элемент массива:");
 		scanf("%d", &arr3[i]);
 	}
+	printf("\n");
+
+	printf("Массив введенных элементов:\n");
 
 	for (i = 0; i < n; i++) {                                      //вывод массива
 		printf("%d   ", arr3[i]);
@@ -79,10 +76,8 @@ void numb3() {           //3 создание массива произвольного размера, вводимого с
 
 
 
-
-
 void numb4() {          //4 сумму значений в каждом столбце (или строке) двумерного массива
-	
+
 	printf("No 4\n");
 	int* arr4;
 	int h, k;
@@ -142,11 +137,10 @@ void numb4() {          //4 сумму значений в каждом столбце (или строке) двумерн
 
 void numb5() {                 //поиск среди структур student структуру с  заданными параметрами (фамилией, именем и т.д.).
 
-	setvbuf(stdin, NULL, _IONBF, 0);
-	setvbuf(stdout, NULL, _IONBF, 0);                         //_IONBF	Буфер не используется, независимо от buffer или size.
-	int i;                                                    
-															  //Если modeустановлено значение _IONBF, поток небуферизуется, 
-														 	  //и оба параметра sizeи bufferигнорируются
+	printf("No 5\n");
+	int i;
+
+
 	struct student
 	{
 		char famil[20];
@@ -202,20 +196,23 @@ void numb5() {                 //поиск среди структур student структуру с  задан
 	scanf("%s", &nam);
 	printf("\n");
 
+	int count = 0;
 	for (i = 0; i < t; i++) {
 		if ((strcmp(stud[i].famil, fami) == 0) && (strcmp(stud[i].name, nam) == 0)) {
 			printf("Cтудент %s %s обучается на факультете %s, номер зачётной книжки %d \n", stud[i].famil, stud[i].name, stud[i].facult, stud[i].zachetka);
+			count++;
 		}
 	}
 
-
+	if (count == 0) {
+		printf("Совпадений не найдено\n");
+	}
 }
 
 
 
+int main() {
 
-	int main() {
-	
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	setlocale(LC_ALL, "Russian");
@@ -226,6 +223,6 @@ void numb5() {                 //поиск среди структур student структуру с  задан
 	numb3();
 	numb4();
 	numb5();
-	
+
 	system("pause");
 }

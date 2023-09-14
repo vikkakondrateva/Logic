@@ -79,7 +79,7 @@ void numb3() {           //3 создание массива произвольного размера, вводимого с
 void numb4() {          //4 сумму значений в каждом столбце (или строке) двумерного массива
 
 	printf("No 4\n");
-	int* arr4;
+	int** arr4;
 	int h, k;
 	int i, j;
 
@@ -90,19 +90,24 @@ void numb4() {          //4 сумму значений в каждом столбце (или строке) двумерн
 
 	printf("k = %d\n", k);
 	printf("h = %d\n", h);
-	arr4 = (int*)malloc(h * k * sizeof(int));
+	//arr4 = (int*)malloc(h * k * sizeof(int));
+
+	arr4 = (int**)malloc(sizeof(int*) * k);
+	for (int j = 0; j < k; j++) {
+		arr4[j] = (int*)malloc(sizeof(int) * h);
+	}
 
 	for (j = 0; j < k; j++) {                                       //цикл для задания массива
 		for (i = 0; i < h; i++) {
-			*(arr4 + j * h + i) = rand() % 200 - 100;
+			arr4[j][i] = rand() % 200 - 100;
 			/*printf("Введите элемент массива[%d][%d]:", j, i);     //для значений с клавиатуры
-			scanf("%d", *(arr4 + j * h + i));*/
+			scanf("%d", arr4[j][i]);*/
 		}
 	}
 
 	for (j = 0; j < k; j++) {                                        //цикл для вывода массива
 		for (i = 0; i < h; i++) {
-			printf("%7d", *(arr4 + j * h + i));
+			printf("%7d", arr4[j][i]);
 		}
 		printf("\n");
 	}
@@ -114,7 +119,7 @@ void numb4() {          //4 сумму значений в каждом столбце (или строке) двумерн
 	for (j = 0; j < k; j++) {                                //j - stroki
 		sum = 0;
 		for (i = 0; i < h; i++) {
-			sum = sum + *(arr4 + j * h + i);
+			sum = sum + arr4[j][i];
 		}
 		printf("Сумма строки No %d = %d\n", j, sum);
 	}
@@ -123,7 +128,7 @@ void numb4() {          //4 сумму значений в каждом столбце (или строке) двумерн
 	for (i = 0; i < h; i++) {                                //i - stolbci
 		sum = 0;
 		for (j = 0; j < k; j++) {
-			sum = sum + *(arr4 + j * h + i);
+			sum = sum + arr4[j][i];
 		}
 		printf("Сумма столбца No %d = %d\n", j, sum);
 	}

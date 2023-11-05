@@ -6,10 +6,12 @@
 //struct Node* root;
 int C;
 int R;
+int A;
 
 void FindTree(struct Node* root, int data);
 struct Node* CreateTree(struct Node* root, struct Node* r, int data);
 void print_tree(struct Node* r, int l);
+void level(int data);
 
 struct Node
 {
@@ -26,7 +28,7 @@ int main()
 	struct Node* root;
 	root = NULL;
 
-	printf("-1 - окончание построения дерева\n");
+	printf("-1 - окончание построения дерева\n\n");
 	while (1)
 	{
 		printf("Введите число: ");
@@ -39,7 +41,7 @@ int main()
 		else
 		{
 			C = 0; R = 0;
-			FindTree(root, D);							// функцию для исключения добавления одинаковых символов
+			//FindTree(root, D);							// функцию для исключения добавления одинаковых символов
 			if (C == 0)
 			{
 				root = CreateTree(root, root, D);
@@ -64,10 +66,11 @@ int main()
 		}
 		else
 		{
-			C = 0; R = 0;
+			C = 0; R = 0; A = 0;
 			FindTree(root, D);
+
 			printf("Число вхождений = %d\n", C);
-			printf("Сложность поиска = %d\n", R);
+			printf("Сложность поиска = %d\n\n", R);
 		}
 	}
 
@@ -77,11 +80,16 @@ int main()
 void FindTree(struct Node* root, int data)
 {
 	R++;
-	if (root == NULL) return;
+	if (root == NULL)
+	{
+		return;
+	}
 
 	if (data == root->data)
 	{
 		C++;
+		level(data);
+		//A = R - 1;
 	}
 
 	if (data < root->data)
@@ -138,4 +146,10 @@ void print_tree(struct Node* r, int l)
 
 	printf("%d\n", r->data);
 	print_tree(r->left, l + 1);
+}
+
+void level(int data)
+{
+	A = R - 1;
+	printf("Уровень числа %d = %d\n", data, A);
 }

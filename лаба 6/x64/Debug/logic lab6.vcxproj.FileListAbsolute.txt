@@ -1,0 +1,5 @@
+D:\Projects\C\logic lab6\x64\Debug\logic lab6.exe
+F:\Логика\logic lab6\x64\Debug\logic lab6.exe
+E:\Логика\logic lab6\x64\Debug\logic lab6.exe
+D:\Уник\2 курс\Логика и основы алгоритмизации в инженерных задачах\logic lab6\x64\Debug\logic lab6.exe
+D:\Уник\2 курс\Логика и основы алгоритмизации в инженерных задачах\лаба 6\x64\Debug\logic lab6.exe
